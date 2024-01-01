@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import '../widgets/textField.dart';
 import '../widgets/button.dart';
+import '../screens/splashScreen.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
   @override
-  _LoginPageState createState() => _LoginPageState();
+  // ignore: library_private_types_in_public_api
+  LoginPageState createState() => LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class LoginPageState extends State<LoginPage> {
   bool isAuthenticated = false; // Add a variable to track authentication
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -35,7 +37,7 @@ class _LoginPageState extends State<LoginPage> {
         child: Center(
           child: Container(
             width: screenWidth * 0.8,
-            height: screenHeight * 0.6,
+            height: screenHeight * 0.8,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(10),
@@ -43,7 +45,8 @@ class _LoginPageState extends State<LoginPage> {
             padding: const EdgeInsets.all(24.0),
             child: Center(
               child: Column(
-                mainAxisSize: MainAxisSize.min,
+                mainAxisSize: MainAxisSize.max, // Set mainAxisSize to max
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   const FlutterLogo(
                     size: 80.0,
@@ -108,18 +111,6 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
         ),
-      ),
-    );
-  }
-}
-
-class SplashScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // You can add any loading animation or branding elements to your splash screen
-    return Scaffold(
-      body: Center(
-        child: CircularProgressIndicator(),
       ),
     );
   }
