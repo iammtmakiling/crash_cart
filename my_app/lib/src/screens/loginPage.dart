@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widgets/textField.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -9,6 +10,8 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   bool isAuthenticated = false; // Add a variable to track authentication
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -54,27 +57,17 @@ class _LoginPageState extends State<LoginPage> {
                     width: screenWidth * 0.7,
                     child: Column(
                       children: [
-                        TextFormField(
-                          style: const TextStyle(fontSize: 22.0),
-                          decoration: InputDecoration(
-                            labelText: 'Username',
-                            prefixIcon: Container(
-                              margin: const EdgeInsets.all(22.0),
-                              child:
-                                  const Icon(Icons.person, color: Colors.grey),
-                            ),
-                          ),
+                        CustomTextField(
+                          labelText: 'Username',
+                          prefixIcon: Icons.person,
+                          controller: usernameController,
+                          obscureText: false,
                         ),
                         const SizedBox(height: 20.0),
-                        TextFormField(
-                          style: const TextStyle(fontSize: 22.0),
-                          decoration: InputDecoration(
-                            labelText: 'Password',
-                            prefixIcon: Container(
-                              margin: const EdgeInsets.all(22.0),
-                              child: const Icon(Icons.lock, color: Colors.grey),
-                            ),
-                          ),
+                        CustomTextField(
+                          labelText: 'Password',
+                          prefixIcon: Icons.lock,
+                          controller: passwordController,
                           obscureText: true,
                         ),
                       ],
