@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import '../tabs/tabs.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _HomePageState createState() => _HomePageState();
 }
 
@@ -9,10 +13,10 @@ class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
 
   final List<Widget> _pages = [
-    Container(child: Center(child: Text('Home Page'))),
-    Container(child: Center(child: Text('History Page'))),
-    Container(child: Center(child: Text('Instructions Page'))),
-    Container(child: Center(child: Text('Profile Page'))),
+    const HomeTab(),
+    const StreamTab(),
+    const InstructionsTab(),
+    const ProfileTab(),
   ];
 
   @override
@@ -29,7 +33,7 @@ class _HomePageState extends State<HomePage> {
             _currentIndex = index;
           });
         },
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
@@ -51,7 +55,7 @@ class _HomePageState extends State<HomePage> {
         elevation: 0, // No shadow
         selectedItemColor: Colors.indigo, // Active tab text and icon color
         unselectedItemColor: Colors.white, // Inactive tab text and icon color
-        selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
+        selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
         type: BottomNavigationBarType.fixed,
       ),
     );
