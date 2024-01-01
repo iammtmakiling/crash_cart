@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/textField.dart';
+import '../widgets/button.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -13,6 +14,10 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
+  //Dummy Credentials
+  String password = "a";
+  String username = "a";
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -24,7 +29,7 @@ class _LoginPageState extends State<LoginPage> {
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [Color(0xFF336CFB), Color(0x006bfbce)],
+            colors: [Colors.cyan, Colors.indigo],
           ),
         ),
         child: Center(
@@ -49,7 +54,7 @@ class _LoginPageState extends State<LoginPage> {
                     style: TextStyle(
                       fontSize: 18.0,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xFF336CFB),
+                      color: Colors.cyan,
                     ),
                   ),
                   const SizedBox(height: 40.0),
@@ -70,32 +75,34 @@ class _LoginPageState extends State<LoginPage> {
                           controller: passwordController,
                           obscureText: true,
                         ),
+                        const SizedBox(height: 16.0),
+                        CustomButton(
+                          text: 'Login',
+                          width: double.infinity,
+                          height: 42,
+                          onPressed: () {
+                            setState(() {
+                              if (username == usernameController.text &&
+                                  password == passwordController.text) {
+                                isAuthenticated = true;
+                              }
+                            });
+
+                            if (isAuthenticated) {
+                              // Navigate to splash screen first
+                              Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                    builder: (context) => SplashScreen()),
+                              );
+                            } else {
+                              // Handle authentication failure
+                              // Show error message or take appropriate action
+                            }
+                          },
+                        ),
                       ],
                     ),
                   ),
-                  const SizedBox(height: 16.0),
-                  ElevatedButton(
-                    onPressed: () {
-                      // Implement login functionality
-                      // For simplicity, just set isAuthenticated to true for demonstration
-                      setState(() {
-                        isAuthenticated = true;
-                      });
-
-                      if (isAuthenticated) {
-                        // Navigate to splash screen first
-                        Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(
-                              builder: (context) => SplashScreen()),
-                        );
-                      } else {
-                        // Handle authentication failure
-                        // Show error message or take appropriate action
-                      }
-                    },
-                    child: Text('Login'),
-                  ),
-                  const SizedBox(height: 16.0),
                 ],
               ),
             ),
