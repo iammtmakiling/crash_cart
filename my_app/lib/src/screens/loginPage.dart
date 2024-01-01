@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import '../widgets/textField.dart';
-import '../widgets/button.dart';
+import '../widgets/widgets.dart';
 import '../screens/splashScreen.dart';
 
 class LoginPage extends StatefulWidget {
