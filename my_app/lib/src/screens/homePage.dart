@@ -23,40 +23,55 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: CustomizedAppBar(),
-      body: _pages[_currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
+        body: _pages[_currentIndex],
+        bottomNavigationBar: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [Colors.cyan, Colors.indigo],
+            ),
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.history),
-            label: 'History',
+          child: BottomNavigationBar(
+            currentIndex: _currentIndex,
+            onTap: (index) {
+              setState(() {
+                _currentIndex = index;
+              });
+            },
+            items: [
+              BottomNavigationBarItem(
+                icon: _currentIndex == 0
+                    ? const Icon(Icons.home)
+                    : const Icon(Icons.home_outlined),
+                label: '',
+              ),
+              BottomNavigationBarItem(
+                icon: _currentIndex == 1
+                    ? const Icon(Icons.insert_drive_file)
+                    : const Icon(Icons.insert_drive_file_outlined),
+                label: '',
+              ),
+              BottomNavigationBarItem(
+                icon: _currentIndex == 2
+                    ? const Icon(Icons.info)
+                    : const Icon(Icons.info_outline),
+                label: '',
+              ),
+              BottomNavigationBarItem(
+                icon: _currentIndex == 3
+                    ? const Icon(Icons.person)
+                    : const Icon(Icons.person_outline),
+                label: '',
+              ),
+            ],
+            backgroundColor: Colors.transparent,
+            selectedItemColor: Colors.white,
+            unselectedItemColor: Colors.white,
+            type: BottomNavigationBarType.fixed,
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.book),
-            label: 'Instructions',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-          ),
-        ],
-        backgroundColor: Colors.cyan, // Set a transparent background
-        elevation: 0, // No shadow
-        selectedItemColor: Colors.indigo, // Active tab text and icon color
-        unselectedItemColor: Colors.white, // Inactive tab text and icon color
-        selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
-        type: BottomNavigationBarType.fixed,
-      ),
-    );
+        ));
   }
 }
