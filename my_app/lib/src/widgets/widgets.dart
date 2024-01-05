@@ -3,3 +3,4 @@ export 'textField.dart';
 export 'appbar.dart';
 export 'coloredbox.dart';
 export 'searchbar.dart';
+export 'patientBox.dart';
