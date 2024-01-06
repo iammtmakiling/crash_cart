@@ -5,3 +5,4 @@ export 'coloredbox.dart';
 export 'searchbar.dart';
 export 'patientBox.dart';
 export 'miniAppBar.dart';
+export 'userDetail.dart';
