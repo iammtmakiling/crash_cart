@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
+import '../widgets/widgets.dart';
 
 class InstructionsTab extends StatelessWidget {
   const InstructionsTab({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Instructions Tab'),
-    );
+    return const Column(children: [MiniAppBar()]);
   }
 }

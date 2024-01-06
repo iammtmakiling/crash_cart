@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'tabs.dart';
+import '../widgets/widgets.dart';
 
 class StreamTab extends StatelessWidget {
   const StreamTab({Key? key}) : super(key: key);
@@ -8,58 +9,7 @@ class StreamTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          decoration: const BoxDecoration(
-            color: Colors.white,
-          ),
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(32, 16, 32, 0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    const Spacer(),
-                    PopupMenuButton<String>(
-                      icon: const Icon(Icons.menu, color: Colors.grey),
-                      itemBuilder: (context) => [
-                        const PopupMenuItem<String>(
-                          value: 'logout',
-                          child: Text('Logout'),
-                        ),
-                      ],
-                      onSelected: (value) {
-                        if (value == 'logout') {
-                          // Implement logout functionality
-                          // For example, you can navigate to the login screen
-                          Navigator.pushReplacementNamed(context, '/login');
-                        }
-                      },
-                    ),
-                  ],
-                ),
-                const Row(
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Crash Cart',
-                          style: TextStyle(
-                            fontSize: 24,
-                            color: Colors.cyan,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 20)
-              ],
-            ),
-          ),
-        ),
+        const MiniAppBar(),
         Expanded(
           child: DefaultTabController(
             length: 2, // Number of tabs
